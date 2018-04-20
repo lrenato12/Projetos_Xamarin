@@ -13,6 +13,8 @@ namespace App02_Xamarin
 		{
 			InitializeComponent();
 
+
+
             MainPage = new App02_Xamarin.Master.Menu();
 		}
 
