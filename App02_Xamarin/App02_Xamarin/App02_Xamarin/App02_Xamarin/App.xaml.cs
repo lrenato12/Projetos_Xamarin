@@ -17,6 +17,7 @@ namespace App02_Xamarin
 
 		protected override void OnStart ()
 		{
+
 			// Handle when your app starts
 		}
 
