@@ -12,13 +12,12 @@ namespace App02_Xamarin
 		public App ()
 		{
 			InitializeComponent();
+
             MainPage = new App02_Xamarin.Master.Menu();
 		}
 
 		protected override void OnStart ()
 		{
-
-
 			// Handle when your app starts
 		}
 
