@@ -4,12 +4,12 @@
              x:Class="App2_Tarefa.Telas.Inicio">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout x:Name="SLTarefas" Padding="10" Spacing="10">
-                <StackLayout BackgroundColor="Blue" HeightRequest="250">
-                    <Label Text="Meu dia" FontSize="24" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    <Label Text="Quinta, 06 de Abril" HorizontalOptions="Start" VerticalOptions="End" TextColor="White" />
-                </StackLayout>
+            <StackLayout BackgroundColor="Blue" HeightRequest="250">
+                <Label Text="Meu dia" FontSize="24" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                <Label Text="" x:Name="DataHoje" HorizontalOptions="Start" VerticalOptions="End" TextColor="White" />
+            </StackLayout>
 
+            <StackLayout x:Name="SLTarefas" Padding="10" Spacing="10">
                 <StackLayout Orientation="Horizontal" Spacing="15">
                     <Image VerticalOptions="Center">
                         <Image.Source>
@@ -69,15 +69,16 @@
                     </Image>
                 </StackLayout>
 
-                <Button HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="ActionGoCadastro">
-                    <Button.Image>
-                        <OnPlatform x:TypeArguments="FileImageSource">
-                            <On Platform="Android, iOS" Value="AddBotao.png" />
-                            <On Platform="UWP" Value="Resources/AddBotao.png" />
-                        </OnPlatform>
-                    </Button.Image>
-                </Button>
             </StackLayout>
+            
+            <Button HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="ActionGoCadastro">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android, iOS" Value="AddBotao.png" />
+                        <On Platform="UWP" Value="Resources/AddBotao.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
