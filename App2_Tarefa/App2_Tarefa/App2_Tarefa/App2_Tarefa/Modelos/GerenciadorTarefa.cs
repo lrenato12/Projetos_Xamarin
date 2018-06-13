@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace App2_Tarefa.Modelos
 {
@@ -14,16 +15,19 @@ namespace App2_Tarefa.Modelos
             Lista.Add(tarefa);
             SalvarNoProperties(Lista);
         }
-        public void Deletar(Tarefa tarefa)
+        public void Deletar(int index)
         {
             Lista = Listar();
-            Lista.Remove(tarefa);
+            Lista.RemoveAt(index);
+
             SalvarNoProperties(Lista);
         }
         public void Finalizar(int index, Tarefa tarefa)
         {
             Lista = Listar();
             Lista.RemoveAt(index);
+
+            tarefa.DataFinalizacao = DateTime.Now;
             Lista.Add(tarefa);
             SalvarNoProperties(Lista);
         }
@@ -31,19 +35,24 @@ namespace App2_Tarefa.Modelos
         {
             return ListarNoProperties();
         }
-        private List<Tarefa> ListarNoProperties()
-        {
-            if (App.Current.Properties.ContainsKey("Tarefas"))
-                return (List<Tarefa>)App.Current.Properties["Tarefas"];
-            else
-                return new List<Tarefa>();
-        }
         private void SalvarNoProperties(List<Tarefa> Lista)
         {
             if (App.Current.Properties.ContainsKey("Tarefas"))
                 App.Current.Properties.Remove("Tarefas");
 
-            App.Current.Properties.Add("Tarefas", Lista);
+            string JsonValue = JsonConvert.SerializeObject(Lista);
+            App.Current.Properties.Add("Tarefas", JsonValue);
+        }
+        private List<Tarefa> ListarNoProperties()
+        {
+            if (App.Current.Properties.ContainsKey("Tarefas"))
+            {
+                string JsonValue = (String)App.Current.Properties["Tarefas"];
+                return JsonConvert.DeserializeObject<List<Tarefa>>(JsonValue);
+                //return (List<Tarefa>)App.Current.Properties["Tarefas"];
+            }
+            else
+                return new List<Tarefa>();
         }
     }
 }
