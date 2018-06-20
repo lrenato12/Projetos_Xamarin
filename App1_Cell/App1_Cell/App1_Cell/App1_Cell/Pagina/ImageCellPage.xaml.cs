@@ -18,11 +18,11 @@ namespace App1_Cell.Pagina
 			InitializeComponent ();
 
             List<Funcionario> Lista = new List<Funcionario>();
-            Lista.Add(new Funcionario() { Nome = "Renato", Cargo = "Presidente" });
-            Lista.Add(new Funcionario() { Nome = "Luiz", Cargo = "Vendedor" });
-            Lista.Add(new Funcionario() { Nome = "Camila", Cargo = "Tester" });
-            Lista.Add(new Funcionario() { Nome = "Otávio", Cargo = "Design" });
-            Lista.Add(new Funcionario() { Nome = "João", Cargo = "MotoBoy" });
+            Lista.Add(new Funcionario() { Foto= "http://pt.heroquizz.com/imgquizz/icon/p9h5b.png", Nome = "Renato", Cargo = "Presidente" });
+            Lista.Add(new Funcionario() { Foto= "https://image.freepik.com/icones-gratis/perfil-nerd-avatar-masculino_318-68813.jpg", Nome = "Luiz", Cargo = "Vendedor" });
+            Lista.Add(new Funcionario() { Foto= "http://arabis.com.br/wp-content/uploads/2015/01/icon_perfil_amarelo.png", Nome = "Camila", Cargo = "Tester" });
+
+            ListaFuncionario.ItemsSource = Lista;
         }
 	}
 }
