@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1_Estilo.Paginas.ImplicityStylePage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="BackgroundColor" Value="Blue"/>
+                <Setter Property="TextColor" Value="Yellow"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="1"/>
+            <Label Text="2"/>
+            <Label Text="3"/>
+            <Label Text="4"/>
+            <StackLayout>
+                <StackLayout.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="TextColor" Value="Yellow"/>
+                        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                        <Setter Property="BackgroundColor" Value="Black"/>
+                    </Style>
+                </StackLayout.Resources>
+                <Label Text="1"/>
+                <Label Text="2"/>
+                <Label Text="3"/>
+                <Label Text="4"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
