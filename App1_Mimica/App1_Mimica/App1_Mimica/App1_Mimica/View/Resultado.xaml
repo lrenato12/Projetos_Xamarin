@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1_Mimica.View.Resultado">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Grupo 1" FontSize="20"/>
+            <Label Text="30 pontos" FontSize="64" HorizontalOptions="Center"/>
+            <Label Text="Grupo 2" FontSize="20"/>
+            <Label Text="120 pontos" FontSize="64" HorizontalOptions="Center"/>
+            <Button Text="Jogar novamente"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
