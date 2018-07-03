@@ -6,20 +6,20 @@
         <StackLayout>
             <StackLayout>
                 <Label Text="Grupo"/>
-                <Label Text="Palavra - Pontuação (1)"/>
-                <Label Text="*************" HorizontalOptions="CenterAndExpand" />
-                <Button Text="Mostrar"/>
+                <Label Text="{Binding PalavraPontuacao}"/>
+                <Label Text="{Binding Palavra}" HorizontalOptions="CenterAndExpand" />
+                <Button Text="Mostrar" IsVisible="{Binding IsVisibleBtnMostrar}" Command="{Binding MostrarPalavra}"/>
             </StackLayout>
-            <StackLayout>
-                <Label Text="200" FontSize="100" HorizontalOptions="CenterAndExpand"/>
-                <Label Text="seg" FontSize="100" HorizontalOptions="CenterAndExpand"/>
+            <StackLayout IsVisible="{Binding IsVisibleContainerContagem}">
+                <Label Text="{Binding TextoContagem}" FontSize="100" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="seg" HorizontalOptions="CenterAndExpand"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Acertou" BackgroundColor="LightCoral"/>
-                    <Button Text="Errou" BackgroundColor="Cornsilk"/>
+                    <Button Text="Acertou" BackgroundColor="LightGreen" Command="{Binding Acertou}"/>
+                    <Button Text="Errou" BackgroundColor="OrangeRed" Command="{Binding Errou}"/>
                 </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <Button Text="Iniciar"/>
+            <StackLayout IsVisible="{Binding IsVisibleBtnIniciar}">
+                <Button Text="Iniciar" Command="{Binding Iniciar}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

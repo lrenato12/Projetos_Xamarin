@@ -15,6 +15,7 @@ namespace App1_Mimica.View
 		public Jogo ()
 		{
 			InitializeComponent ();
+            BindingContext = new ViewModel.JogoViewModel();
 		}
 	}
 }

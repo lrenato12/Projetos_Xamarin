@@ -14,17 +14,22 @@ namespace App1_Mimica.ViewModel
         public InicioViewModel()
         {
             IniciarCommand = new Command(IniciarJogo);
+            Jogo = new Jogo();
+            Jogo.Grupo1 = new Grupo();
+            Jogo.Grupo2 = new Grupo();
         }
 
         private void IniciarJogo()
         {
+            Armazenamento.Armazenamento.Jogo = this.Jogo;
+            Armazenamento.Armazenamento.RodadaAtual = 1;
             App.Current.MainPage = new View.Jogo();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string NameProperty)
         {
-            if(NameProperty != null)
+            if(PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(NameProperty));
             }
