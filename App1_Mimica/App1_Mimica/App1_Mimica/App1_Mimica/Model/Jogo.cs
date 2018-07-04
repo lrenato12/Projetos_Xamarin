@@ -11,5 +11,6 @@ namespace App1_Mimica.Model
         public string Nivel { get; set; }
         public short TempoPalavra { get; set; }
         public short Rodadas { get; set; }
+        public int NivelNumerico { get; set; }
     }
 }

@@ -9,5 +9,11 @@ namespace App1_Mimica.Armazenamento
     {
         public static Jogo Jogo { get; set; }
         public static short RodadaAtual { get; set; }
+        public static string[][] Palavras =
+        {
+            new string[]{"Olho", "Lingua", "Chinelo", "Milho", "Penalty", "Bola", "Ping-pong"},
+            new string[]{"Carpinteiro", "Amarelo", "Limão", "Abelha"},
+            new string[]{ "Sisterna", "Lanterna", "Batman vs Superman", "Notebook" }
+        };
     }
 }
