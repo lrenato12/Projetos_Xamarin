@@ -12,6 +12,7 @@ namespace App1_Mimica.ViewModel
         public Grupo Grupo { get; set; }
 
         public string NomeGrupo { get; set; }
+        public string NumeroGrupo { get; set; }
 
         public byte _PalavraPontuacao;
         public byte PalavraPontuacao { get { return _PalavraPontuacao; } set { _PalavraPontuacao = value; OnPropertyChanged("PalavraPontuacao"); } }
@@ -40,6 +41,11 @@ namespace App1_Mimica.ViewModel
         {
             Grupo = grupo;
             NomeGrupo = grupo.Nome;
+            if (grupo == Armazenamento.Armazenamento.Jogo.Grupo1)
+                NumeroGrupo = "Grupo 1 ";
+            else
+                NumeroGrupo = "Grupo 2 ";
+
             IsVisibleContainerContagem = false;
             IsVisibleBtnIniciar = false;
             IsVisibleBtnMostrar = true;
