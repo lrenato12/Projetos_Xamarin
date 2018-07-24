@@ -55,5 +55,105 @@ namespace App1_NossoChat.Service
 
             return null;
         }
+
+        public static bool InsertChat(Chat chat)
+        {
+            var url = $"{EnderecoBase}/chat";
+
+            FormUrlEncodedContent param = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>("nome", chat.nome)
+            });
+
+            HttpClient requisicao = new HttpClient();
+            HttpResponseMessage reposta = requisicao.PostAsync(url, param).GetAwaiter().GetResult();
+
+            if (reposta.StatusCode == HttpStatusCode.OK)
+                return true;
+
+            return false;
+        }
+
+        public static bool RenomearChat(Chat chat)
+        {
+            var url = $"{EnderecoBase}/chat/{chat.id}";
+
+            FormUrlEncodedContent param = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>("nome", chat.nome)
+            });
+
+            HttpClient requisicao = new HttpClient();
+            HttpResponseMessage reposta = requisicao.PutAsync(url, param).GetAwaiter().GetResult();
+
+            if (reposta.StatusCode == HttpStatusCode.OK)
+                return true;
+
+            return false;
+        }
+
+        public static bool DeleteChat(Chat chat)
+        {
+            var url = $"{EnderecoBase}/chat/delete/{chat.id}";
+
+            HttpClient requisicao = new HttpClient();
+            HttpResponseMessage reposta = requisicao.DeleteAsync(url).GetAwaiter().GetResult();
+
+            if (reposta.StatusCode == HttpStatusCode.OK)
+                return true;
+
+            return false;
+        }
+
+        public static List<Mensagem> GetMensagensChat(Chat chat)
+        {
+            var url = $"{EnderecoBase}/chat/{chat.id}/msg";
+
+            HttpClient requisicao = new HttpClient();
+            HttpResponseMessage reposta = requisicao.GetAsync(url).GetAwaiter().GetResult();
+
+            if (reposta.StatusCode == HttpStatusCode.OK)
+            {
+                string conteudo = reposta.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                if (conteudo.Length > 2)
+                {
+                    var Lista = JsonConvert.DeserializeObject<List<Mensagem>>(conteudo);
+                    return Lista;
+                }
+
+                return null;
+            }
+
+            return null;
+        }
+
+        public static bool InsertMensagem(Mensagem mensagem)
+        {
+            var url = $"{EnderecoBase}/chat/{mensagem.id_chat}/msg";
+            
+            FormUrlEncodedContent param = new FormUrlEncodedContent(new[] {
+                new KeyValuePair<string, string>("mensagem", mensagem.mensagem),
+                new KeyValuePair<string, string>("id_usuario", mensagem.id_usuario.ToString())
+            });
+
+            HttpClient requisicao = new HttpClient();
+            HttpResponseMessage reposta = requisicao.PostAsync(url, param).GetAwaiter().GetResult();
+
+            if (reposta.StatusCode == HttpStatusCode.OK)
+                return true;
+
+            return false;
+        }
+
+        public static bool DeleteMensagem(Mensagem mensagem)
+        {
+            var url = $"{EnderecoBase}/chat/{mensagem.id_chat}/delete/{mensagem.id}";
+
+            HttpClient requisicao = new HttpClient();
+            HttpResponseMessage reposta = requisicao.DeleteAsync(url).GetAwaiter().GetResult();
+
+            if (reposta.StatusCode == HttpStatusCode.OK)
+                return true;
+
+            return false;
+        }
     }
 }
